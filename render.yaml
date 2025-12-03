@@ -1,0 +1,16 @@
+# Render.com Blueprint specification
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: tic-tac-toe-browser
+    runtime: node
+    plan: free
+    buildCommand: npm install && cd client && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 18.19.0
+    healthCheckPath: /api/health
